@@ -124,6 +124,7 @@ loadTasks();
 const horas = document.getElementById('horas');
 const minutos = document.getElementById('minutos');
 const segundos = document.getElementById('segundos');
+const dataAtual = document.getElementById('data-atual');
 
 const relogio = setInterval(function time() {
     let dateToday = new Date();
@@ -132,13 +133,15 @@ const relogio = setInterval(function time() {
     let s = dateToday.getSeconds();
 
     if (hr < 10) hr = '0' + hr;
-
     if (min < 10) min = '0' + min;
-
     if (s < 10) s = '0' + s;
 
     horas.textContent = hr;
     minutos.textContent = min;
     segundos.textContent = s;
 
-})
+    // Exibindo a data no formato "Dia da semana, DD/MM/AAAA"
+    let diaDaSemana = dateToday.toLocaleDateString('pt-BR', { weekday: 'long' });
+    let data = dateToday.toLocaleDateString('pt-BR');
+    dataAtual.textContent = `${diaDaSemana}, ${data}`;
+}, 1000);

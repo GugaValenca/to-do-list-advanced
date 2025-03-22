@@ -152,26 +152,59 @@ button.complete-btn:hover {
     background-color: rgba(177, 168, 168, 0.2); /* Cor de fundo cinza claro com opacidade */
 }
 
+.clock {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 110px; /* Ajustado para diminuir o tamanho */
+    width: 300px;  /* Ajustado para diminuir o tamanho */
+    background: transparent;
+    border-radius: 15px;
+    box-shadow: 0px 8px 10px rgba(80, 78, 78, 0.5);
+    position: absolute;
+    top: 10px;
+    right: 2px;
+    backdrop-filter: blur(15px); /* Efeito de blur com intensidade menor */
+    background-color: rgba(177, 168, 168, 0.4); /* Cor de fundo cinza chumbo claro com mais opacidade */
+}
+
+/* Estilo das divisões dentro da caixa do relógio */
 .clock div {
-    height: 130px;
-    width: 140px;
+    height: 100px; /* Ajustado para diminuir o tamanho */
+    width: 130px;  /* Ajustado para diminuir o tamanho */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #fff;
     background: linear-gradient(145deg, #2c2f36, #4f5359); /* Degradê chumbo */
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, .7);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.7);
     border-radius: 10px;
     letter-spacing: 3px;
-    margin-right: 1px; /* Espaço entre as caixas */
+    margin-right: 5px; /* Espaço entre as caixas */
 }
 
+/* Estilo dos números */
 .clock span {
     font-weight: bolder;
-    font-size: 60px;
+    font-size: 40px; /* Tamanho ajustado para o relógio menor */
 }
 
+/* Estilo do texto pequeno (Horas, Minutos, Segundos) */
 .clock span.tempo {
     font-size: 10px;
+}
+
+/* Estilo para a data abaixo do relógio */
+.data {
+    position: absolute;
+    top: 125px; /* Posicionando logo abaixo do relógio */
+    right: 35px; /* Alinhando no canto superior direito */
+    font-size: 18px;
+    color: #fff;
+    background: rgba(5, 5, 5, 0.6);
+    padding: 10px;
+    border-radius: 7px;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
 }
