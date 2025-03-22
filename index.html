@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/clock.ico" type="image/x-icon">
+    <title>To-Do List Advanced</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1>To-Do List</h1>
+
+        <div class="input-container">
+            <input type="text" id="task-input" placeholder="Adicionar tarefa...">
+            <select id="category-input">
+                <option value="Pessoal">Pessoal</option>
+                <option value="Trabalho">Trabalho</option>
+                <option value="Estudos">Estudos</option>
+            </select>
+            <button id="add-task-btn">+</button>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn" id="show-all">Todas</button>
+            <button class="filter-btn" id="show-pessoal">Pessoal</button>
+            <button class="filter-btn" id="show-trabalho">Trabalho</button>
+            <button class="filter-btn" id="show-estudos">Estudos</button>
+        </div>
+
+        <ul id="task-list" class="task-list"></ul>
+    </div>
+    
+    <div class="clock">
+        <div>
+            <span id="horas">00</span>
+            <span class="tempo">Hours</span>
+        </div>
+
+        <div>
+            <span id="minutos">00</span>
+            <span class="tempo">Minutes</span>
+        </div>
+
+        <div>
+            <span id="segundos">00</span>
+            <span class="tempo">Seconds</span>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
