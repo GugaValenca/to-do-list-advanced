@@ -173,17 +173,17 @@ li {
 }
 
 /* Estilo para o botão ativo da categoria */
-/* Estilo para o botão ativo da categoria */
 .active-category {
-    background-color: #007BFF; /* Cor de fundo azul */
+    background-color: #383b3d; /* Cor de fundo azul */
     color: white; /* Cor do texto branca */
-    border: 2px solid #0056b3; /* Borda mais escura */
+    border: 2px solid #fff; /* Borda mais escura */
     font-weight: bold; /* Deixa o texto em negrito */
     cursor: pointer; /* Cursor pointer para indicar interatividade */
 }
 
 .active-category:hover {
-    background-color: #0056b3; /* Cor de fundo mais escura ao passar o mouse */
+    background-color: #e5e9ec; /* Cor de fundo mais escura ao passar o mouse */
+    color: black;
 }
 
 /* Estilo para as tarefas na lista */
