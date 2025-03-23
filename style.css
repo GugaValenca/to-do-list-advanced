@@ -1,210 +1,216 @@
-/* Estilos Globais */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap');
-
+/* Estilos Gerais */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'open sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-image: url('assets/background.jpg'); /* Caminho para a imagem */
-    background-size: cover; /* A imagem cobre toda a área da tela */
-    background-position: center; /* A imagem ficará centralizada */
-    background-attachment: fixed; /* A imagem fica fixa enquanto você rola a página */
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  font-family: "Arial", sans-serif;
+  background-image: url(assets/bakgorundnew.jpg);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
 }
 
 .app-container {
-    width: 100%;
-    max-width: 600px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+  background: rgba(3, 3, 3, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+  width: 800px; /* Aumentando a largura em 40% */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  backdrop-filter: blur(20px); /* Efeito de blur no fundo */
+  border: 2px solid rgba(255, 255, 255, 0.1); /* Borda transparente */
 }
 
 h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
 .input-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 input[type="text"] {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 1rem;
-    background-color: #f9f9f9;
+  width: 70%;
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #222;
+  color: white;
+  font-size: 1rem;
 }
 
 select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: #f9f9f9;
-    font-size: 1rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #222;
+  color: white;
+  font-size: 1rem;
 }
 
 button {
-    padding: 10px 12px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 6px;
-    cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: 10px;
 }
 
 button:hover {
-    background-color: #45a049;
+  background-color: #555;
 }
 
 .filters {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .filter-btn {
-    padding: 8px 15px;
-    border: none;
-    background-color: #e0e0e0;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: transparent;
+  border: 1px solid #555;
+  color: white;
+  padding: 5px 15px;
+  margin: 0 5px;
+  cursor: pointer;
 }
 
 .filter-btn:hover {
-    background-color: #d3d3d3;
+  background-color: #555;
 }
 
-.task-list {
-    list-style-type: none;
+ul {
+  list-style-type: none;
+  margin-top: 20px;
 }
 
 li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+  padding: 10px;
+  border-bottom: 1px solid #444;
+  font-size: 1.1rem;
 }
 
-li:hover {
-    background-color: #f1f1f1;
-}
-
-.completed {
-    text-decoration: line-through;
-    color: #999;
-}
-
-button.delete-btn {
-    background-color: #e74c3c;
-}
-
-button.delete-btn:hover {
-    background-color: #c0392b;
-}
-
-button.complete-btn {
-    background-color: #3498db;
-}
-
-button.complete-btn:hover {
-    background-color: #2980b9;
-}
-
+/* Relógio Digital */
 .clock {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: auto;
-    width: auto;
-    background: transparent;
-    border-radius: 3px;
-    box-shadow: 0px 8px 10px rgba(80, 78, 78, 0.5);
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    backdrop-filter: blur(20px); /* Efeito de blur no fundo */
-    background-color: rgba(177, 168, 168, 0.2); /* Cor de fundo cinza claro com opacidade */
+  position: fixed;
+  top: 170px;
+  right: 80px;
+  width: 200px;
+  height: 70px;
+  color: white;
+  font-size: 30px; /* Aumentando o tamanho em 30% */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 18px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-.clock {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 110px; /* Ajustado para diminuir o tamanho */
-    width: 300px;  /* Ajustado para diminuir o tamanho */
-    background: transparent;
-    border-radius: 15px;
-    box-shadow: 0px 8px 10px rgba(80, 78, 78, 0.5);
-    position: absolute;
-    top: 10px;
-    right: 2px;
-    backdrop-filter: blur(15px); /* Efeito de blur com intensidade menor */
-    background-color: rgba(177, 168, 168, 0.4); /* Cor de fundo cinza chumbo claro com mais opacidade */
+/* Data */
+.date {
+  position: absolute;
+  width: 350px;
+  height: 150px; /* Aumentando a altura para 100px */
+  top: 10px;
+  right: 20px;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 5px 5px; /* Aumentando o padding para 100px */
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-/* Estilo das divisões dentro da caixa do relógio */
-.clock div {
-    height: 100px; /* Ajustado para diminuir o tamanho */
-    width: 130px;  /* Ajustado para diminuir o tamanho */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    background: linear-gradient(145deg, #2c2f36, #4f5359); /* Degradê chumbo */
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    letter-spacing: 3px;
-    margin-right: 5px; /* Espaço entre as caixas */
+#day-of-week {
+  font-weight: 500;
+  font-size: 4rem;
 }
 
-/* Estilo dos números */
-.clock span {
-    font-weight: bolder;
-    font-size: 40px; /* Tamanho ajustado para o relógio menor */
+/* Responsividade */
+@media (max-width: 400px) {
+  .app-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  input[type="text"],
+  select,
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .filter-btn {
+    width: 100%;
+    margin-bottom: 5px;
+  }
 }
 
-/* Estilo do texto pequeno (Horas, Minutos, Segundos) */
-.clock span.tempo {
-    font-size: 10px;
+/* Estilo para o botão ativo da categoria */
+/* Estilo para o botão ativo da categoria */
+.active-category {
+    background-color: #007BFF; /* Cor de fundo azul */
+    color: white; /* Cor do texto branca */
+    border: 2px solid #0056b3; /* Borda mais escura */
+    font-weight: bold; /* Deixa o texto em negrito */
+    cursor: pointer; /* Cursor pointer para indicar interatividade */
 }
 
-/* Estilo para a data abaixo do relógio */
-.data {
-    position: absolute;
-    top: 125px; /* Posicionando logo abaixo do relógio */
-    right: 35px; /* Alinhando no canto superior direito */
-    font-size: 18px;
-    color: #fff;
-    background: rgba(5, 5, 5, 0.6);
-    padding: 10px;
-    border-radius: 7px;
-    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
-    letter-spacing: 2px;
+.active-category:hover {
+    background-color: #0056b3; /* Cor de fundo mais escura ao passar o mouse */
 }
+
+/* Estilo para as tarefas na lista */
+.task {
+    margin-bottom: 5px; /* Reduz o espaço entre as tarefas (50% de redução) */
+}
+
+/* Estilo para o nome da categoria ao lado da tarefa */
+.category-name {
+    font-size: 0.8em; /* Tamanho de fonte menor */
+    color: #fff; /* Cor cinza para a categoria */
+    margin-left: 5px; /* Espaço à esquerda da tarefa */
+    font-style: italic; /* Deixa a categoria em itálico */
+}
+
+/* Estilo para o botão de remover (X) */
+.remove-task-btn {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.remove-task-btn:hover {
+    color: darkred; /* Cor mais escura ao passar o mouse */
+}
+

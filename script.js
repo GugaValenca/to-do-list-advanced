@@ -1,147 +1,143 @@
-// Seletores de elementos HTML
-const addTaskButton = document.getElementById('add-task-btn');
-const taskInput = document.getElementById('task-input');
-const categoryInput = document.getElementById('category-input');
-const taskList = document.getElementById('task-list');
-const showAllButton = document.getElementById('show-all');
-const showPessoalButton = document.getElementById('show-pessoal');
-const showTrabalhoButton = document.getElementById('show-trabalho');
-const showEstudosButton = document.getElementById('show-estudos');
+// Função para atualizar o relógio
+function updateClock() {
+    const now = new Date();
 
-// Função para carregar as tarefas do localStorage
-function loadTasks() {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    taskList.innerHTML = '';
-    tasks.forEach(task => {
-        createTaskElement(task);
-    });
+    // Horário
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+    document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
+
+    // Data
+    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayOfWeek = daysOfWeek[now.getDay()];
+    const date = now.toLocaleDateString('en-US');
+
+    document.getElementById('day-of-week').textContent = dayOfWeek;
+    document.getElementById('full-date').textContent = date;
 }
 
-// Função para salvar as tarefas no localStorage
-function saveTasks(tasks) {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+// Atualiza a hora e data a cada segundo
+setInterval(updateClock, 1000);
+updateClock();  // Chama a função imediatamente para mostrar a hora sem espera
 
-// Função para criar um novo item de tarefa
-function createTaskElement(task) {
-    const li = document.createElement('li');
-    li.classList.add(task.completed ? 'completed' : '');
-    li.dataset.id = task.id;
+// Função para adicionar tarefas à lista
+document.getElementById('add-task-btn').addEventListener('click', function() {
+    const taskInput = document.getElementById('task-input');
+    const categoryInput = document.getElementById('category-input');
+    const taskValue = taskInput.value.trim();
+    const categoryValue = categoryInput.value;
 
-    li.innerHTML = `
-        <span>${task.name} - ${task.category}</span>
-        <button class="delete-btn">Excluir</button>
-        <button class="complete-btn">${task.completed ? 'Desmarcar' : 'Concluir'}</button>
-    `;
+    if (taskValue && categoryValue) {
+        // Criar elemento de tarefa
+        const li = document.createElement('li');
+        li.textContent = taskValue;
+        li.classList.add('task');
+        li.dataset.category = categoryValue;  // Atribui a categoria à tarefa
 
-    // Função para excluir tarefa
-    li.querySelector('.delete-btn').addEventListener('click', () => {
-        deleteTask(task.id);
-    });
+        // Adicionar a categoria ao lado da tarefa entre aspas e com fonte menor
+        const categorySpan = document.createElement('span');
+        categorySpan.textContent = ` "${categoryValue}"`;  // Categoria entre aspas
+        categorySpan.classList.add('category-name');
+        li.appendChild(categorySpan);
 
-    // Função para marcar/desmarcar tarefa
-    li.querySelector('.complete-btn').addEventListener('click', () => {
-        toggleCompleteTask(task.id);
-    });
+        // Botão de remover com "X"
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'X';  // Usando "X" como texto para o botão de remover
+        removeButton.classList.add('remove-task-btn');
+        removeButton.addEventListener('click', () => {
+            li.remove(); // Remove a tarefa
+            updateCategoryButtons(); // Atualiza os botões de categoria após remoção
+        });
 
-    taskList.appendChild(li);
-}
+        li.appendChild(removeButton);
 
-// Função para adicionar uma nova tarefa
-function addTask() {
-    const taskName = taskInput.value.trim();
-    const category = categoryInput.value;
+        // Adiciona a tarefa à lista da categoria escolhida
+        const categoryList = document.getElementById(`task-list-${categoryValue}`);
+        categoryList.appendChild(li);
+        taskInput.value = ''; // Limpa o campo de input após adicionar
 
-    if (!taskName) {
-        alert('Por favor, adicione uma descrição para a tarefa.');
-        return;
+        // Atualiza os botões de filtro
+        updateCategoryButtons();
     }
+});
 
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    const newTask = {
-        id: Date.now(),
-        name: taskName,
-        category: category,
-        completed: false
-    };
+// Função para atualizar os botões de categoria com base nas tarefas
+function updateCategoryButtons() {
+    const categories = ['Personal', 'Work', 'Study']; // As categorias possíveis
+    categories.forEach(category => {
+        const categoryList = document.getElementById(`task-list-${category}`);
+        const filterButton = document.getElementById(`show-${category.toLowerCase()}`);
 
-    tasks.push(newTask);
-    saveTasks(tasks);
-    createTaskElement(newTask);
-
-    taskInput.value = '';
+        // Se houver tarefas, habilita o botão da categoria, senão, desabilita
+        if (categoryList.children.length > 0) {
+            filterButton.disabled = false;
+            filterButton.style.cursor = 'pointer';
+        } else {
+            filterButton.disabled = true;
+            filterButton.style.cursor = 'not-allowed';
+        }
+    });
 }
 
-// Função para excluir uma tarefa
-function deleteTask(taskId) {
-    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    tasks = tasks.filter(task => task.id !== taskId);
-    saveTasks(tasks);
-    loadTasks();
+// Função para alternar entre mostrar e esconder a lista de tarefas de uma categoria
+function toggleCategoryList(category) {
+    const categoryList = document.getElementById(`task-list-${category}`);
+    const filterButton = document.getElementById(`show-${category.toLowerCase()}`);
+    
+    // Alterna entre mostrar e esconder a lista de tarefas
+    if (categoryList.style.display === 'none' || categoryList.style.display === '') {
+        categoryList.style.display = 'block';
+        // Adiciona a classe para destacar o botão da categoria
+        filterButton.classList.add('active-category');
+    } else {
+        categoryList.style.display = 'none';
+        // Remove o destaque do botão
+        filterButton.classList.remove('active-category');
+    }
 }
 
-// Função para marcar/desmarcar uma tarefa como concluída
-function toggleCompleteTask(taskId) {
-    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    const task = tasks.find(task => task.id === taskId);
-    task.completed = !task.completed;
-    saveTasks(tasks);
-    loadTasks();
+// Função para alternar entre mostrar e esconder todas as tarefas
+let allVisible = false; // Flag para saber se as tarefas estão visíveis ou não
+function toggleAllTasks() {
+    const allCategoryLists = ['Personal', 'Work', 'Study'];
+    allCategoryLists.forEach(category => {
+        const categoryList = document.getElementById(`task-list-${category}`);
+        const filterButton = document.getElementById(`show-${category.toLowerCase()}`);
+        if (allVisible) {
+            categoryList.style.display = 'none'; // Esconde todas as listas
+            // Remove o destaque do botão
+            filterButton.classList.remove('active-category');
+        } else {
+            categoryList.style.display = 'block'; // Exibe todas as listas
+            // Adiciona a classe para destacar o botão da categoria
+            filterButton.classList.add('active-category');
+        }
+    });
+    allVisible = !allVisible; // Alterna o estado de visibilidade
 }
 
-// Filtros para tarefas por categoria
-showAllButton.addEventListener('click', () => {
-    loadTasks();
-});
+// Função de inicialização dos botões de categoria
+function initializeCategoryButtons() {
+    // Adiciona os eventos de clique nos botões de categoria
+    const categories = ['Personal', 'Work', 'Study'];
+    categories.forEach(category => {
+        const filterButton = document.getElementById(`show-${category.toLowerCase()}`);
+        filterButton.addEventListener('click', () => {
+            toggleCategoryList(category);
+        });
+    });
 
-showPessoalButton.addEventListener('click', () => {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    const filteredTasks = tasks.filter(task => task.category === 'Pessoal');
-    taskList.innerHTML = '';
-    filteredTasks.forEach(task => createTaskElement(task));
-});
+    // Evento do botão "ALL" para mostrar/ocultar todas as tarefas
+    document.getElementById('show-all').addEventListener('click', () => {
+        toggleAllTasks();
+    });
+}
 
-showTrabalhoButton.addEventListener('click', () => {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    const filteredTasks = tasks.filter(task => task.category === 'Trabalho');
-    taskList.innerHTML = '';
-    filteredTasks.forEach(task => createTaskElement(task));
-});
+// Chama a função para inicializar os botões de categoria ao carregar a página
+initializeCategoryButtons();
 
-showEstudosButton.addEventListener('click', () => {
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    const filteredTasks = tasks.filter(task => task.category === 'Estudos');
-    taskList.innerHTML = '';
-    filteredTasks.forEach(task => createTaskElement(task));
-});
-
-// Event listener para adicionar tarefa
-addTaskButton.addEventListener('click', addTask);
-
-// Carregar as tarefas ao iniciar
-loadTasks();
-
-const horas = document.getElementById('horas');
-const minutos = document.getElementById('minutos');
-const segundos = document.getElementById('segundos');
-const dataAtual = document.getElementById('data-atual');
-
-const relogio = setInterval(function time() {
-    let dateToday = new Date();
-    let hr = dateToday.getHours();
-    let min = dateToday.getMinutes();
-    let s = dateToday.getSeconds();
-
-    if (hr < 10) hr = '0' + hr;
-    if (min < 10) min = '0' + min;
-    if (s < 10) s = '0' + s;
-
-    horas.textContent = hr;
-    minutos.textContent = min;
-    segundos.textContent = s;
-
-    // Exibindo a data no formato "Dia da semana, DD/MM/AAAA"
-    let diaDaSemana = dateToday.toLocaleDateString('pt-BR', { weekday: 'long' });
-    let data = dateToday.toLocaleDateString('pt-BR');
-    dataAtual.textContent = `${diaDaSemana}, ${data}`;
-}, 1000);
+// Inicializa a página com todas as listas de categorias escondidas
+document.getElementById('task-list-Personal').style.display = 'none';
+document.getElementById('task-list-Work').style.display = 'none';
+document.getElementById('task-list-Study').style.display = 'none';

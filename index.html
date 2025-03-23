@@ -1,57 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/clock.ico" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/clock.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
     <title>To Do List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="app-container">
-        <h1>To-Do List</h1>
+      <h1>To-Do List</h1>
 
-        <div class="input-container">
-            <input type="text" id="task-input" placeholder="Adicionar tarefa...">
-            <select id="category-input">
-                <option value="Pessoal">Personal</option>
-                <option value="Trabalho">Work</option>
-                <option value="Estudos">Estudos</option>
-            </select>
-            <button id="add-task-btn">+</button>
-        </div>
+      <div class="input-container">
+        <input type="text" id="task-input" placeholder="Add a task..." />
+        <select id="category-input">
+          <option value="Personal">Personal</option>
+          <option value="Work">Work</option>
+          <option value="Study">Study</option>
+        </select>
+        <button id="add-task-btn">+</button>
+      </div>
 
-        <div class="filters">
-            <button class="filter-btn" id="show-all">Todas</button>
-            <button class="filter-btn" id="show-pessoal">Pessoal</button>
-            <button class="filter-btn" id="show-trabalho">Trabalho</button>
-            <button class="filter-btn" id="show-estudos">Estudos</button>
-        </div>
+      <div class="filters">
+        <button class="filter-btn" id="show-all">All</button>
+        <button class="filter-btn" id="show-personal">Personal</button>
+        <button class="filter-btn" id="show-work">Work</button>
+        <button class="filter-btn" id="show-study">Study</button>
+      </div>
 
-        <ul id="task-list" class="task-list"></ul>
-    </div>
-    
-    <div class="clock">
-        <div>
-            <span id="horas">00</span>
-            <span class="tempo">Hours</span>
-        </div>
-
-        <div>
-            <span id="minutos">00</span>
-            <span class="tempo">Minutes</span>
-        </div>
-
-        <div>
-            <span id="segundos">00</span>
-            <span class="tempo">Seconds</span>
-        </div>
+      <ul id="task-list-Personal" class="task-list"></ul>
+      <ul id="task-list-Work" class="task-list"></ul>
+      <ul id="task-list-Study" class="task-list"></ul>
     </div>
 
-    <div class="data">
-        <span id="data-atual"></span>
+    <!-- Relógio -->
+    <div class="clock" id="clock">
+      <span id="time"></span>
+    </div>
+
+    <!-- Data -->
+    <div class="date" id="date">
+      <span id="day-of-week"></span>
+      <span id="full-date"></span>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
