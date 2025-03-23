@@ -140,8 +140,8 @@ const relogio = setInterval(function time() {
     minutos.textContent = min;
     segundos.textContent = s;
 
-    // Exibindo a data no formato americano (MM/DD/YYYY) em inglês
-    let diaDaSemana = dateToday.toLocaleDateString('en-US', { weekday: 'long' });
-    let data = dateToday.toLocaleDateString('en-US'); // Formato MM/DD/YYYY
+    // Exibindo a data no formato "Dia da semana, DD/MM/AAAA"
+    let diaDaSemana = dateToday.toLocaleDateString('pt-BR', { weekday: 'long' });
+    let data = dateToday.toLocaleDateString('pt-BR');
     dataAtual.textContent = `${diaDaSemana}, ${data}`;
 }, 1000);
