@@ -174,43 +174,50 @@ li {
 
 /* Estilo para o botão ativo da categoria */
 .active-category {
-    background-color: #383b3d; /* Cor de fundo azul */
-    color: white; /* Cor do texto branca */
-    border: 2px solid #fff; /* Borda mais escura */
-    font-weight: bold; /* Deixa o texto em negrito */
-    cursor: pointer; /* Cursor pointer para indicar interatividade */
+  background-color: #383b3d; /* Cor de fundo azul */
+  color: white; /* Cor do texto branca */
+  border: 2px solid #fff; /* Borda mais escura */
+  font-weight: bold; /* Deixa o texto em negrito */
+  cursor: pointer; /* Cursor pointer para indicar interatividade */
 }
 
 .active-category:hover {
-    background-color: #e5e9ec; /* Cor de fundo mais escura ao passar o mouse */
-    color: black;
+  background-color: #e5e9ec; /* Cor de fundo mais escura ao passar o mouse */
+  color: black;
 }
 
 /* Estilo para as tarefas na lista */
 .task {
-    margin-bottom: 5px; /* Reduz o espaço entre as tarefas (50% de redução) */
+  margin-bottom: 5px; /* Reduz o espaço entre as tarefas (50% de redução) */
 }
 
 /* Estilo para o nome da categoria ao lado da tarefa */
 .category-name {
-    font-size: 0.8em; /* Tamanho de fonte menor */
-    color: #fff; /* Cor cinza para a categoria */
-    margin-left: 5px; /* Espaço à esquerda da tarefa */
-    font-style: italic; /* Deixa a categoria em itálico */
+  font-size: 0.8em; /* Tamanho de fonte menor */
+  color: #fff; /* Cor cinza para a categoria */
+  margin-left: 5px; /* Espaço à esquerda da tarefa */
+  font-style: italic; /* Deixa a categoria em itálico */
 }
 
 /* Estilo para o botão de remover (X) */
+
 .remove-task-btn {
-    background: none;
+    width: 16px; /* Reduzido em 60% (originalmente 40px, supondo) */
+    height: 16px; /* Reduzido em 60% */
+    border-radius: 50%; /* Deixa o botão redondo */
+    font-size: 10px; /* Ajusta o tamanho do texto */
+    line-height: 16px; /* Centraliza o texto */
+    text-align: center;
+    background-color: red;
+    color: white;
     border: none;
-    color: red;
     cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    margin-left: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
 }
 
 .remove-task-btn:hover {
-    color: darkred; /* Cor mais escura ao passar o mouse */
+    background-color: darkred;
 }
-
