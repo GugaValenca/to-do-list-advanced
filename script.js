@@ -1,4 +1,3 @@
-// Função para atualizar o relógio
 function updateClock() {
     const now = new Date();
     const hours = now.getHours().toString().padStart(2, '0');
@@ -14,7 +13,6 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// Adicionar tarefa
 document.getElementById('add-task-btn').addEventListener('click', function() {
     const taskInput = document.getElementById('task-input');
     const categoryInput = document.getElementById('category-input');
@@ -49,7 +47,6 @@ document.getElementById('add-task-btn').addEventListener('click', function() {
     }
 });
 
-// Atualizar botões de categoria
 function updateCategoryButtons() {
     const categories = ['Personal', 'Work', 'Study'];
     let allListsEmpty = true;
@@ -75,7 +72,6 @@ function updateCategoryButtons() {
     showAllButton.style.cursor = allListsEmpty ? 'not-allowed' : 'pointer';
 }
 
-// Alternar visibilidade das tarefas por categoria
 function toggleCategoryList(category) {
     const categoryList = document.getElementById(`task-list-${category}`);
     const filterButton = document.getElementById(`show-${category.toLowerCase()}`);
@@ -91,7 +87,6 @@ function toggleCategoryList(category) {
     updateCategoryButtons();
 }
 
-// Alternar visibilidade de todas as tarefas
 let allVisible = false;
 function toggleAllTasks() {
     const categories = ['Personal', 'Work', 'Study'];
@@ -106,7 +101,6 @@ function toggleAllTasks() {
     allVisible = !allVisible;
 }
 
-// Inicializar botões de categoria
 function initializeCategoryButtons() {
     const categories = ['Personal', 'Work', 'Study'];
     categories.forEach(category => {
@@ -119,7 +113,6 @@ function initializeCategoryButtons() {
     updateCategoryButtons();
 }
 
-// Chamar funções de inicialização
 initializeCategoryButtons();
 document.getElementById('task-list-Personal').style.display = 'none';
 document.getElementById('task-list-Work').style.display = 'none';
