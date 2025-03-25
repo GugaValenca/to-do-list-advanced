@@ -186,20 +186,17 @@ li {
 }
 
 .category-name {
-  font-size: 0.8em; /* Tamanho de fonte menor */
-  color: #fff; /* Cor cinza para a categoria */
-  margin-left: 5px; /* Espaço à esquerda da tarefa */
-  font-style: italic; /* Deixa a categoria em itálico */
+  font-size: 0.8em; 
+  color: #fff; 
+  margin-left: 5px; 
+  font-style: italic; 
 }
-
-/* Estilo para o botão de remover (X) */
-
 .remove-task-btn {
-    width: 16px; /* Reduzido em 60% (originalmente 40px, supondo) */
-    height: 16px; /* Reduzido em 60% */
-    border-radius: 50%; /* Deixa o botão redondo */
-    font-size: 10px; /* Ajusta o tamanho do texto */
-    line-height: 16px; /* Centraliza o texto */
+    width: 16px; 
+    height: 16px; 
+    border-radius: 50%; 
+    font-size: 10px;
+    line-height: 16px; 
     text-align: center;
     background-color: red;
     color: white;
